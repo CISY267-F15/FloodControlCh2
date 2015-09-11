@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace FloodControlCh2
+namespace Flood_Control
 {
     /// <summary>
     /// This is the main type for your game
@@ -18,6 +18,24 @@ namespace FloodControlCh2
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        Texture2D playingPieces;
+        Texture2D backgroundScreen;
+        Texture2D titleScreen;
+
+        GameBoard gameBoard;
+
+        Vector2 gameboardDisplayOrigin = new Vector2(70, 89);
+
+        int playerScore = 0;
+
+        enum GameStates { TitleScreen, Playing };
+        GameStates gameState = GameStates.TitleScreen;
+
+        Rectangle EmptyPiece = new Rectangle(1, 247, 40, 40);
+
+        const float MinTimeSinceLastInput = 0.25f;
+        float timeSinceLastInput = 0.0f;
 
         public Game1()
         {
@@ -34,6 +52,12 @@ namespace FloodControlCh2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            this.IsMouseVisible = true;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 800;
+            graphics.ApplyChanges();
+            gameBoard = new GameBoard();
 
             base.Initialize();
         }
