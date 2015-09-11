@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace Flood_Control
+namespace FloodControlCh2
 {
     class GameBoard
     {
-        Random RAND = new Random();
+        Random rand = new Random();
 
         public const int GameBoardWidth = 8;
         public const int GameBoardHeight = 10;
@@ -56,7 +56,7 @@ namespace Flood_Control
 
         public void RandomPiece(int x, int y)
         {
-            boardSquares[x, y].SetPiece(GamePiece.pieceType[RAND.Next(0,
+            boardSquares[x, y].SetPiece(GamePiece.PieceTypes[rand.Next(0,
                 GamePiece.MaxPlayablePieceIndex + 1)]);
         }
 
@@ -82,11 +82,11 @@ namespace Flood_Control
             
             if (dropSquares)
             {
-                for (int x = 0; x < GameBoardWidth; X++)
+                for (int x = 0; x < GameBoardWidth; x++)
                 {
                     for (int y = GameBoard.GameBoardHeight - 1; y >= 0; y--)
                     {
-                        if (GetSquare(x, Y) == "Empty")
+                        if (GetSquare(x, y) == "Empty")
                         {
                             FillFromAbove(x, y);
                         }
@@ -104,7 +104,7 @@ namespace Flood_Control
                 }
         }
 
-        public void RestWater()
+        public void ResetWater()
         {
             for (int y = 0; y < GameBoardHeight; y++)
                 for (int x = 0; x < GameBoardWidth; x++)

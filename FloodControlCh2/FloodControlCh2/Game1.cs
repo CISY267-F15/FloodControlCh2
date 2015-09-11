@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Flood_Control
+namespace FloodControlCh2
 {
     /// <summary>
     /// This is the main type for your game
@@ -72,9 +72,9 @@ namespace Flood_Control
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            playingPieces = Content.Load<Texture2D>(@"Textures\Tile_Sheet");
-            backgroundScreen = Content.Load<Texture2D>(@"Textures\Background");
-            titleScreen = Content.Load<Texture2D>(@"Textures\TitleScreen");
+            playingPieces = Content.Load<Texture2D>(@"Images\Tile_Sheet");
+            backgroundScreen = Content.Load<Texture2D>(@"Images\Background");
+            titleScreen = Content.Load<Texture2D>(@"Images\TitleScreen");
         }
 
         /// <summary>
@@ -122,9 +122,9 @@ namespace Flood_Control
 
                     gameBoard.ResetWater();
 
-                    for (int y = 0; y < gameBoard.GameBoardHeight; y++)
+                    for (int y = 0; y < GameBoard.GameBoardHeight; y++)
                     {
-                        CheckSoringChain(gameBoard.GetWaterChain(y));
+                        CheckScoringChain(gameBoard.GetWaterChain(y));
                     }
 
                     gameBoard.GenerateNewPieces(true);
@@ -166,8 +166,8 @@ namespace Flood_Control
                         this.Window.ClientBounds.Height),
                     Color.White);
                 
-                for (int x = 0; x < gameBoard.GameBoardWidth; x ++)
-                    for (int y = 0; y < gameBoardHeight; y++)
+                for (int x = 0; x < GameBoard.GameBoardWidth; x ++)
+                    for (int y = 0; y < GameBoard.GameBoardHeight; y++)
                     {
                         int pixelX = (int)gameBoardDisplayOrigin.X +
                             (x * GamePiece.PieceWidth);
@@ -215,7 +215,7 @@ namespace Flood_Control
                 Vector2 LastPipe = WaterChain[WaterChain.Count - 1];
 
 
-                if (LastPipe.X == gameBoard.GameBoardWidth - 1)
+                if (LastPipe.X == GameBoard.GameBoardWidth - 1)
                 {
                     if (gameBoard.HasConnector(
                         (int)LastPipe.X, (int)LastPipe.Y, "Right"))

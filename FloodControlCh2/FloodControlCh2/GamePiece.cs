@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Flood_Control
+namespace FloodControlCh2
 {
     class GamePiece
     {
@@ -78,7 +78,7 @@ namespace Flood_Control
             pieceSuffix = pieceSuffix.Replace(suffix, "");
         }
 
-        public vois RotatePiece(bool Clockwise)
+        public void RotatePiece(bool Clockwise)
         {
             switch (pieceType)
             {
