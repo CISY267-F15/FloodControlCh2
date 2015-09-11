@@ -119,7 +119,7 @@ namespace FloodControlCh2
         public void PropagateWater(int x, int y, string fromDirection)
         {
             if ((y >= 0) && (y < GameBoardHeight) &&
-                (x > 0) && (x < GameBoardWidth))
+                (x >= 0) && (x < GameBoardWidth))
             {
                 if (boardSquares[x, y].HasConnector(fromDirection) &&
                     !boardSquares[x, y].Suffix.Contains("W"))
