@@ -57,7 +57,7 @@ namespace Flood_Control
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 600;
             graphics.ApplyChanges();
-            gameBoard = new gameBoard();
+            gameBoard = new GameBoard();
 
             base.Initialize();
         }
@@ -149,7 +149,7 @@ namespace Flood_Control
             {
                 spriteBatch.Begin();
                 spriteBatch.Draw(titleScreen,
-                    new Rectangle(0,0
+                    new Rectangle(0,0,
                         this.Window.ClientBounds.Width,
                         this.Window.ClientBounds.Height),
                 Color.White);
@@ -204,7 +204,7 @@ namespace Flood_Control
 
         private int DetermineScore(int SquareCount)
         {
-            return (int)(Math.Pow((SquareCount / 5), 2) + SquareCount) * 10);
+            return (int)((Math.Pow((SquareCount / 5), 2) + SquareCount) * 10);
         }
 
         private void CheckScoringChain(List<Vector2> WaterChain)
@@ -241,7 +241,7 @@ namespace Flood_Control
             int y = ((mouseState.Y -
                 (int)gameBoardDisplayOrigin.Y) / GamePiece.PieceHeight);
 
-            if ((x >= 0 && (x < GameBoard.GameBoardWidth) &&
+            if ((x >= 0) && (x < GameBoard.GameBoardWidth) &&
                 (y >= 0)  && (y < GameBoard.GameBoardHeight))
             {
                 if (mouseState.LeftButton == ButtonState.Pressed)
