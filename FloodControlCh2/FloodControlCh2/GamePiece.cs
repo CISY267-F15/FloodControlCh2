@@ -143,6 +143,23 @@ namespace FloodControlCh2
             return pieceType.Contains(direction);
         }
 
+        //------------------------------
+        // Sprite sheet methods
+
+        public Rectangle GetSourceRect()
+        {
+            int x = TEXTURE_OFFSET_X;
+            int y = TEXTURE_OFFSET_Y;
+
+            if (pieceSuffix.Contains("W")) {
+                x += PIECE_WIDTH + TEXTURE_PADDING_X;
+            }
+
+            y += (Array.IndexOf(PieceTypes,pieceType)) * (PIECE_HEIGHT + TEXTURE_PADDING_Y);
+
+            return new Rectangle(x,y, PIECE_WIDTH,PIECE_HEIGHT);
+        }
+
 
 
     }
