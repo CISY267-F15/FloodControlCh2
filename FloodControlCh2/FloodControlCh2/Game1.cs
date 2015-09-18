@@ -23,9 +23,14 @@ namespace FloodControlCh2
         Texture2D backgroundScreen;
         Texture2D titleScreen;
 
+        SpriteFont pericles36Font;
+
         GameBoard gameBoard;
 
         Vector2 gameBoardDisplayOrigin = new Vector2(70, 89);
+
+        //score board
+        Vector2 scorePosition = new Vector2(605, 215);
 
         int playerScore = 0;
 
@@ -70,6 +75,9 @@ namespace FloodControlCh2
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // Sprite font
+            pericles36Font = Content.Load<SpriteFont>(@"Fonts\Pericles36");
 
             // TODO: use this.Content to load your game content here
             playingPieces = Content.Load<Texture2D>(@"Images\Tile_Sheet");
@@ -139,7 +147,8 @@ namespace FloodControlCh2
                             HandleMouseInput(Mouse.GetState());
                         }
                     }
-
+                    //Update to zooms during play
+                    UpdateScoreZooms();
                     break;
 
                     //gameBoard.ResetWater();
@@ -255,7 +264,21 @@ namespace FloodControlCh2
                             Color.White);
                     }
 */
-                this.Window.Title = playerScore.ToString();
+                //this.Window.Title = playerScore.ToString();
+                foreach (ScoreZoom zoom in ScoreZooms)
+                {
+                    spriteBatch.DrawString(pericles36Font, zoom.Text,
+                        new Vector2(this.Window.ClientBounds.Width / 2,
+                            this.Window.ClientBounds.Height / 2),
+                        zoom.DrawColor, 0.0f,
+                        new Vector2(pericles36Font.MeasureString(zoom.Text).X / 2,
+                            pericles36Font.MeasureString(zoom.Text).Y / 2),
+                        zoom.Scale, SpriteEffects.None, 0.0f);
+                }
+                spriteBatch.DrawString(pericles36Font,
+                    playerScore.ToString(),
+                    scorePosition,
+                    Color.Black);
 
                 spriteBatch.End();
            }
@@ -282,7 +305,10 @@ namespace FloodControlCh2
                         (int)LastPipe.X, (int)LastPipe.Y, "Right"))
                     {
                         playerScore += DetermineScore(WaterChain.Count);
-
+                        // score zoom
+                        ScoreZooms.Enqueue(new ScoreZoom("+" +
+                            DetermineScore(WaterChain.Count).ToString(),
+                            new Color(1.0f, 0.0f, 0.0f, 0.4f)));
                         foreach (Vector2 ScoringSquare in WaterChain)
                         {
                             //part 2 generating fading pieces
@@ -331,7 +357,7 @@ namespace FloodControlCh2
             }
         }
 
-        // new draw methods for the animation
+        // new draw methods for the animations
         private void DrawEmptyPiece(int pixelX, int pixelY)
         {
             spriteBatch.Draw(
@@ -391,6 +417,22 @@ namespace FloodControlCh2
             new Vector2(GamePiece.PieceWidth / 2,
             GamePiece.PieceHeight / 2),
             SpriteEffects.None, 0.0f);
+        }
+
+        //ScoreZoom 
+        Queue<ScoreZoom> ScoreZooms = new Queue<ScoreZoom>();
+
+        private void UpdateScoreZooms()
+        {
+            int dequeueCounter = 0;
+            foreach (ScoreZoom zoom in ScoreZooms)
+            {
+                zoom.Update();
+                if (zoom.IsCompleted)
+                    dequeueCounter++;
+            }
+            for (int d = 0; d < dequeueCounter; d++)
+                ScoreZooms.Dequeue();
         }
 
     }
