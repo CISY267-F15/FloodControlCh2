@@ -66,7 +66,113 @@ namespace FloodControlCh2
         }
 
 
+        //----------------------------
+        // Game Board management
+
+        //starting at given location, examine rows above for non empty piece
+        //copy piece down and repeat for row above until all rows have been
+        //moved
+        public void FillFromAbove(int x, int y)
+        {
+            int rowLookup = y - 1;
+
+            while (rowLookup >= 0)
+            {
+                if (GetSquare(x, rowLookup) != "Empty")
+                {
+                    SetSquare(x, y, GetSquare(x, rowLookup));
+                    SetSquare(x, rowLookup, "Empty");
+                    rowLookup = -1;
+                }
+                rowLookup--;
+            }
+        }
 
 
-    }
-}
+        // GenerateNewPieces
+        // can be at start of game or for completion of a path
+        public void GenerateNewPieces(bool dropSquares)
+        {
+            if (dropSquares) // successful path
+            {
+                for (int x = 0; x < GAME_BOARD_WIDTH; x++)
+                {
+                    for (int y = GAME_BOARD_HEIGHT - 1; y >= 0;y-- )
+                    {
+                        if (GetSquare(x, y) == "Empty")
+                        {
+                            FillFromAbove(x, y);
+                        }
+                    }
+                }
+            }
+            else //start of game
+            {
+                for (int y=0; y < GAME_BOARD_HEIGHT;y++)
+                    for(int x=0; x < GAME_BOARD_WIDTH; x++)
+                        if (GetSquare(x, y) == "Empty")
+                        {
+                            RandomPiece(x, y);
+                        }
+            }
+        } // GenerateNewSquares
+
+
+        //------------------------
+        // Water manipulation
+        public void ResetWater()
+        {
+            for (int y = 0; y < GAME_BOARD_HEIGHT; y++)
+                for (int x = 0; x < GAME_BOARD_WIDTH; x++)
+                    boardSquares[x, y].RemoveSuffix("W");
+        }
+
+        public void FillPiece(int x, int y)
+        {
+            boardSquares[x, y].AddSuffix("W");
+        }
+
+        public void PropogateWater(int x, int y, string fromDirection)
+        {
+            // check to see if we are still on the board
+            if ((y >= 0) && (y < GAME_BOARD_HEIGHT) &&
+                (x >= 0) && (x < GAME_BOARD_WIDTH))
+            {
+                //check to see if the path should continue
+                if (boardSquares[x, y].HasConnector(fromDirection) &&
+                    !boardSquares[x, y].PieceSuffix.Contains("W"))
+                {
+                    // fill the square, add to water tracker and propogate the path
+                    FillPiece(x, y);
+                    waterTracker.Add(new Vector2(x, y));
+                    foreach (string end in boardSquares[x, y].GetOtherEnds(fromDirection))
+                    {
+                        switch (end)
+                        {
+                            case "Left":
+                                PropogateWater(x - 1, y, "Right");
+                                break;
+                            case "Right":
+                                PropogateWater(x + 1, y, "Left");
+                                break;
+                            case "Top":
+                                PropogateWater(x, y-1, "Bottom");
+                                break;
+                            case "Bottom":
+                                PropogateWater(x, y + 1, "Top");
+                                break;
+                        }//switch
+                    }//for each (not really necessary to block this one
+                } // if path continues
+            } // if on board
+        } // propogate water
+
+
+        public List<Vector2> GetWaterChain(int y) {
+            waterTracker.Clear();
+            PropogateWater(0, y, "Left");
+            return waterTracker;
+        }
+
+    } //class GameBoard
+} // namespace
