@@ -125,6 +125,25 @@ namespace FloodControlCh2
             };
         }
 
+        //-----------------------
+        // Connector methods
+
+        public string[] GetOtherEnds(string startingEnd)
+        {
+            List<string> opposites = new List<string>();
+            foreach (string end in pieceType.Split(','))
+            {
+                if (end != startingEnd) opposites.Add(end);
+            }
+            return opposites.ToArray();
+        }
+
+        public bool HasConnector(string direction)
+        {
+            return pieceType.Contains(direction);
+        }
+
+
 
     }
 }
