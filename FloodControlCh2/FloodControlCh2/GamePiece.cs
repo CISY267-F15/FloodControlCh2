@@ -83,6 +83,47 @@ namespace FloodControlCh2
             pieceSuffix = pieceSuffix.Replace(suffix, "");
         }
 
+        //----------------------------
+        // gameplay - rotation
+
+        public void RotatePiece(bool clockwise)
+        {
+            switch (pieceType)
+            {
+                case "Left,Right":
+                    pieceType = "Top,Bottom";
+                    break;
+                case "Top,Bottom":
+                    pieceType = "Left,Right";
+                    break;
+                case "Left,Top":
+                    if (clockwise)
+                        pieceType = "Top,Right";
+                    else
+                        pieceType = "Bottom,Left";
+                    break;
+                case "Top,Right":
+                    if (clockwise)
+                        pieceType = "Right,Bottom";
+                    else
+                        pieceType = "Left,Top";
+                    break;
+                case "Right,Bottom":
+                    if (clockwise)
+                        pieceType = "Bottom,Left";
+                    else
+                        pieceType = "Top,Right";
+                    break;
+                case  "Bottom,Left":
+                    if (clockwise)
+                        pieceType = "Left,Top";
+                    else
+                        pieceType = "Right,Bottom";
+                    break;
+                case "Empty":
+                    break;
+            };
+        }
 
 
     }
