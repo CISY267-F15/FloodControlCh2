@@ -1,6 +1,6 @@
 using System;
 
-namespace FloodControlCh2
+namespace FloodControl
 {
 #if WINDOWS || XBOX
     static class Program
