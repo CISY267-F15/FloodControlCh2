@@ -176,6 +176,8 @@ namespace FloodControlCh2
                     SetSquare(x, y,
                         GetSquare(x, rowLookup));
                     SetSquare(x, rowLookup, "Empty");
+                    AddFallingPiece(x, y, GetSquare(x, y),
+                        GamePiece.PieceHeight * (y-rowLookup));
                     rowLookup = -1;
                 }
                 rowLookup--;
@@ -205,6 +207,8 @@ namespace FloodControlCh2
                     if (GetSquare(x, y) == "Empty")
                     {
                         RandomPiece(x, y);
+                        AddFallingPiece(x, y, GetSquare(x,y),
+                            GamePiece.PieceHeight * GameBoardHeight);
                     }
                 }
         }
