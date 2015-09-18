@@ -69,13 +69,13 @@ namespace FloodControlCh2
 
         public void AddSuffix(string suffix)
         {
-            if (!pieceSuffix.Contains(Suffix))
+            if (!pieceSuffix.Contains(suffix))
                 pieceSuffix += suffix;
         }
 
         public void RemoveSuffix(string suffix)
         {
-            pieceSuffix = pieceSuffix.Replace(Suffix, "");
+            pieceSuffix = pieceSuffix.Replace(suffix, "");
         }
 
         public void RotatePiece(bool Clockwise)

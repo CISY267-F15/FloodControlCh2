@@ -55,7 +55,7 @@ namespace FloodControlCh2
 
             this.IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = 800;
-            graphics.PreferredBackBufferHeight = 800;
+            graphics.PreferredBackBufferHeight = 600;
             graphics.ApplyChanges();
             gameBoard = new GameBoard();
 
@@ -72,7 +72,7 @@ namespace FloodControlCh2
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            playingPieces = Content.Load<Texture2D>(@"Textures\Title_Sheet");
+            playingPieces = Content.Load<Texture2D>(@"Textures\Tile_Sheet");
             backgroundScreen = Content.Load<Texture2D>(@"Textures\Background");
             titleScreen = Content.Load<Texture2D>(@"Textures\TitleScreen");
         }
@@ -235,18 +235,18 @@ namespace FloodControlCh2
         private void HandleMouseInput(MouseState mouseState)
         {
 
-            int X = ((mouseState.X -
+            int x = ((mouseState.X -
                 (int)gameboardDisplayOrigin.X) / GamePiece.PieceWidth);
 
             int y = ((mouseState.Y -
                 (int)gameboardDisplayOrigin.Y) / GamePiece.PieceHeight);
 
-            if ((x >= 0) && (X < GameBoard.GameBoardWidth) &&
+            if ((x >= 0) && (x < GameBoard.GameBoardWidth) &&
               (y >= 0) && (y < GameBoard.GameBoardHeight))
             {
                 if (mouseState.LeftButton == ButtonState.Pressed)
                 {
-                    gameBoard.RotatePiece(X, y, false);
+                    gameBoard.RotatePiece(x, y, false);
                     timeSinceLastInput = 0.0f;
                 }
 
