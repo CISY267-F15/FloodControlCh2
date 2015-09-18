@@ -43,5 +43,47 @@ namespace FloodControlCh2
             get { return pieceSuffix; }
         }
 
+        //------------------------
+        // Constructors
+
+        public GamePiece(string type, string suffix)
+        {
+            pieceType = type;
+            pieceSuffix = suffix;
+        }
+
+        public GamePiece(string type)
+        {
+            pieceType = type;
+            pieceSuffix = "";
+        }
+
+        //--------------------------
+        // Setters
+        public void SetPiece(string type, string suffix)
+        {
+            pieceType = type;
+            pieceSuffix = suffix;
+        }
+
+        public void SetPiece(string type)
+        {
+            pieceType = type;
+            pieceSuffix = "";
+        }
+
+        public void AddSuffix(string suffix)
+        {
+            if (!pieceSuffix.Contains(suffix))
+                pieceSuffix += suffix;
+        }
+
+        public void RemoveSuffix(string suffix)
+        {
+            pieceSuffix = pieceSuffix.Replace(suffix, "");
+        }
+
+
+
     }
 }
