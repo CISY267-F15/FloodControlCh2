@@ -27,6 +27,12 @@ namespace FloodControlCh2
 
         GameBoard gameBoard;
 
+        int currentLevel = 0;
+        int linesCompletedThisLevel = 0;
+
+        const float floodAccelerationPerLevel = 0.5f;
+        Vector2 levelTextPosition = new Vector2(512, 215);
+
         const float MaxFloodCounter = 100.0f;
         float floodCount = 0.0f;
         float timeSinceLastFloodIncrease = 0.0f;
@@ -130,6 +136,9 @@ namespace FloodControlCh2
                         gameBoard.ClearBoard();
                         gameBoard.GenerateNewPieces(false);
                         playerScore = 0;
+                        currentLevel = 0;
+                        floodIncreaseAmount = 0.0f;
+                        StartNewLevel();
                         gameState = GameStates.Playing;
                     }
                     break;
@@ -372,6 +381,7 @@ namespace FloodControlCh2
                         (int)LastPipe.X, (int)LastPipe.Y, "Right"))
                     {
                         playerScore += DetermineScore(WaterChain.Count);
+                        linesCompletedThisLevel++;
                         floodCount = MathHelper.Clamp(floodCount -
                             (DetermineScore(WaterChain.Count) / 10), 0.0f, 100.0f);
                         // score zoom
@@ -390,6 +400,10 @@ namespace FloodControlCh2
 
                             gameBoard.SetSquare((int)ScoringSquare.X,
                                 (int)ScoringSquare.Y, "Empty");
+                        }
+                        if (linesCompletedThisLevel >= 10)
+                        {
+                            StartNewLevel();
                         }
                     }
                 }
@@ -502,6 +516,16 @@ namespace FloodControlCh2
             }
             for (int d = 0; d < dequeueCounter; d++)
                 ScoreZooms.Dequeue();
+        }
+
+        private void StartNewLevel()
+        {
+            currentLevel++;
+            floodCount = 0.0f;
+            linesCompletedThisLevel = 0;
+            floodIncreaseAmount += floodAccelerationPerLevel;
+            gameBoard.ClearBoard();
+            gameBoard.GenerateNewPieces(false);
         }
 
     }
