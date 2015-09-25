@@ -21,7 +21,7 @@ namespace FloodControlCh2
                 if (clockwise)
                     return rotationAmount;
                 else
-                    return(MathHelper.Pi * 2) - rotationAmount;
+                    return (MathHelper.Pi * 2) - rotationAmount;
             }
         }
 

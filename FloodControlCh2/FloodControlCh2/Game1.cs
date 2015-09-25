@@ -431,14 +431,14 @@ namespace FloodControlCh2
                 {
                     gameBoard.AddRotatingPiece(x, y,
                         gameBoard.GetSquare(x, y), false);
-                    gameBoard.AddRotatingPiece(x, y,
-                        gameBoard.GetSquare(x, y), true);
                     gameBoard.RotatePiece(x,y, false);
                     timeSinceLastInput = 0.0f;
                 }
 
                 if (mouseState.RightButton == ButtonState.Pressed)
-                {
+                {                
+                    gameBoard.AddRotatingPiece(x, y,
+                        gameBoard.GetSquare(x, y), true);
                     gameBoard.RotatePiece(x, y, true);
                     timeSinceLastInput = 0.0f;
                 }
