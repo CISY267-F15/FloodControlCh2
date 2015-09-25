@@ -86,10 +86,10 @@ namespace FloodControl
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            playingPieces = Content.Load<Texture2D>(@"Textures\Tile_Sheet");
-            backgroundScreen = Content.Load<Texture2D>(@"Textures\Background");
-            titleScreen = Content.Load<Texture2D>(@"Textures\TitleScreen");
-            pericles36Font = Content.Load<SpriteFont>(@"Fonts\Pericles36");
+            playingPieces = Content.Load<Texture2D>(@"Tile_Sheet");
+            backgroundScreen = Content.Load<Texture2D>(@"Background");
+            titleScreen = Content.Load<Texture2D>(@"TitleScreen");
+            pericles36Font = Content.Load<SpriteFont>(@"Pericles36");
 
             // TODO: use this.Content to load your game content here
         }
