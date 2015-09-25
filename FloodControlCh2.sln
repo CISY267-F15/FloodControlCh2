@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloodControlCh2", "FloodControlCh2\FloodControlCh2\FloodControlCh2.csproj", "{611FF636-8B36-408A-AFB7-E847D02435B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloodControl", "FloodControl\FloodControl\FloodControl.csproj", "{A4E6980B-4658-437E-B10A-2C54E645229E}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "FloodControlCh2Content", "FloodControlCh2\FloodControlCh2Content\FloodControlCh2Content.contentproj", "{1038FF4A-66B3-4377-A11F-7A81213239BA}"
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "FloodControlContent", "FloodControl\FloodControlContent\FloodControlContent.contentproj", "{40DF28AD-3634-4FDC-B351-FEA45878EF7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +11,12 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{611FF636-8B36-408A-AFB7-E847D02435B4}.Debug|x86.ActiveCfg = Debug|x86
-		{611FF636-8B36-408A-AFB7-E847D02435B4}.Debug|x86.Build.0 = Debug|x86
-		{611FF636-8B36-408A-AFB7-E847D02435B4}.Release|x86.ActiveCfg = Release|x86
-		{611FF636-8B36-408A-AFB7-E847D02435B4}.Release|x86.Build.0 = Release|x86
-		{1038FF4A-66B3-4377-A11F-7A81213239BA}.Debug|x86.ActiveCfg = Debug|x86
-		{1038FF4A-66B3-4377-A11F-7A81213239BA}.Release|x86.ActiveCfg = Release|x86
+		{A4E6980B-4658-437E-B10A-2C54E645229E}.Debug|x86.ActiveCfg = Debug|x86
+		{A4E6980B-4658-437E-B10A-2C54E645229E}.Debug|x86.Build.0 = Debug|x86
+		{A4E6980B-4658-437E-B10A-2C54E645229E}.Release|x86.ActiveCfg = Release|x86
+		{A4E6980B-4658-437E-B10A-2C54E645229E}.Release|x86.Build.0 = Release|x86
+		{40DF28AD-3634-4FDC-B351-FEA45878EF7B}.Debug|x86.ActiveCfg = Debug|x86
+		{40DF28AD-3634-4FDC-B351-FEA45878EF7B}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

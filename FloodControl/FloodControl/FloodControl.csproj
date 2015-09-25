@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{611FF636-8B36-408A-AFB7-E847D02435B4}</ProjectGuid>
+    <ProjectGuid>{A4E6980B-4658-437E-B10A-2C54E645229E}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FloodControlCh2</RootNamespace>
-    <AssemblyName>FloodControlCh2</AssemblyName>
+    <RootNamespace>FloodControl</RootNamespace>
+    <AssemblyName>FloodControl</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaProfile>HiDef</XnaProfile>
-    <XnaCrossPlatformGroupID>734f27a7-90f6-4a33-a14e-c91806dff63f</XnaCrossPlatformGroupID>
+    <XnaCrossPlatformGroupID>69ae2eb9-e9bc-432b-a4d6-9c0dd297c7fa</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
@@ -107,17 +107,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FadingPiece.cs" />
+    <Compile Include="FallingPiece.cs" />
+    <Compile Include="GameBoard.cs" />
+    <Compile Include="GamePiece.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="RotatingPiece.cs" />
+    <Compile Include="ScoreZoom.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FloodControlCh2Content\FloodControlCh2Content.contentproj">
-      <Name>FloodControlCh2Content</Name>
+    <ProjectReference Include="..\FloodControlContent\FloodControlContent.contentproj">
+      <Name>FloodControlContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>

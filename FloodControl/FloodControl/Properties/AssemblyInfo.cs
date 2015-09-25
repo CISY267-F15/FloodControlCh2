@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FloodControlCh2")]
-[assembly: AssemblyProduct("FloodControlCh2")]
+[assembly: AssemblyTitle("FloodControl")]
+[assembly: AssemblyProduct("FloodControl")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 // On Windows, the following GUID is for the ID of the typelib if this
 // project is exposed to COM. On other platforms, it unique identifies the
 // title storage container when deploying this assembly to the device.
-[assembly: Guid("d343187c-55a0-4a90-88c8-8229bcdb216d")]
+[assembly: Guid("7e4552cd-700b-4eab-bfeb-ab2a680ac6e6")]
 
 // Version information for an assembly consists of the following four values:
 //
