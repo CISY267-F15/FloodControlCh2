@@ -330,6 +330,11 @@ namespace FloodControlCh2
                     scorePosition,
                     Color.Black);
 
+                spriteBatch.DrawString(pericles36Font,
+                    currentLevel.ToString(),
+                    levelTextPosition,
+                    Color.Black);
+
                 int waterHeight = (int)(MaxWaterHeight * (floodCount / 100));
 
                 spriteBatch.Draw(backgroundScreen,
